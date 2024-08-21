@@ -7,14 +7,15 @@ class LoginPage {
   }
 
   async goTo() {
-    await this.page.goTo("https://rahulshettyacademy.com/client/");
+    await this.page.goto("https://rahulshettyacademy.com/client/");
   }
 
   async validLogin(username, password) {
-    await this.userName.fill(email);
-    await this.password.fill("Formul@1");
+    await this.userName.fill(username);
+    await this.password.fill(password);
     await this.signInbutton.click();
+    await this.page.waitForLoadState("networkidle");
   }
 }
 
-module.export = { LoginPage };
+module.exports = { LoginPage };
