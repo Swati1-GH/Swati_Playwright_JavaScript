@@ -1,13 +1,13 @@
-const { test, expect } = require("@playwright_Swati/test");
+const { test, expect } = require("@playwright/test");
 const { POManager } = require("../pageobjects/POManager");
 
 const dataSet = JSON.parse(
-  JSON.stringify(require("../utils/placeholderTestData.json"))
+  JSON.stringify(require("../utils/placeorderTestData.json"))
 );
 
 for (const data of dataSet) {
-  test(´Client Playwright Test ${data.productName}´, async ({ page }) => {
-    const poManager = new poManager(page);
+  test(`Client Playwright Test ${data.productName}`, async ({ page }) => {
+    const poManager = new POManager(page);
     const products = page.locator(".card-body");
 
     const loginPage = poManager.getLoginPage();

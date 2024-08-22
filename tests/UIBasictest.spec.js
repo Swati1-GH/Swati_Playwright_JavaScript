@@ -1,4 +1,4 @@
-const { test, expect } = require("@playwright_Swati/test");
+const { test, expect } = require("@playwright/test");
 
 test("Browser Playwright Test", async ({ browser }) => {
   const context = await browser.newContext();

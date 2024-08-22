@@ -1,4 +1,4 @@
-const { expect } = require();
+const { expect } = require("@playwright/test");
 
 class OrdersReviewPage {
   constructor(page) {

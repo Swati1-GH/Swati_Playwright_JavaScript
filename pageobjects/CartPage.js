@@ -1,4 +1,4 @@
-const { test, expect } = require("@Playright_Swati/test");
+const { test, expect } = require("@playwright/test");
 
 class CartPage {
   constructor(page) {
