@@ -18,18 +18,18 @@ for (const data of dataSet) {
     await dashboardPage.searchProductAddCart(data.productName);
     await dashboardPage.navigateToCart();
 
-    const cartPage = poManager.getcartPage();
+    const cartPage = poManager.getCartPage();
     await cartPage.VerifyProductIsDisplayed(data.productName);
     await cartPage.Checkout();
 
-    const ordersReviewPagePage = poManager.getOrdersReviewPage();
+    const ordersReviewPage = poManager.getOrdersReviewPage();
     await ordersReviewPage.searchCountryAndSelect("ind", "India");
-    const orderId = await ordersReviewPagePage.SubmitAndGetOrderId();
+    const orderId = await ordersReviewPage.SubmitAndGetOrderId();
     console.log(orderId);
 
-    const ordersHistoryPage = poManager.getordersHistoryPage();
-    await ordersHistoryPage.searchOrderAndSelect(orderId);
-    expect(orderId.includes(await ordersHistoryPage.getOrderId())).toBeTruthy();
+    const orderHistoryPage = poManager.getOrderHistoryPage();
+    await orderHistoryPage.searchOrderAndSelect(orderId);
+    expect(orderId.includes(await orderHistoryPage.getOrderId())).toBeTruthy();
   });
 }
 /*

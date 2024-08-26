@@ -13,6 +13,8 @@ class OrdersReviewPage {
 
   async searchCountryAndSelect(countryCode, countryName) {
     await this.country.fill(countryCode, { delay: 100 });
+    await this.country.press("Backspace");
+    await this.country.press("Backspace");
     await this.dropdown.waitFor();
     const optionsCount = await this.dropdown.locator("button").count();
     for (let i = 0; i < optionsCount; i++) {
@@ -30,10 +32,13 @@ class OrdersReviewPage {
 
   async SubmitAndGetOrderId() {
     await this.sumit.click();
-    await expect(this.orderConfirmationText()).toHaveText(
+    await expect(this.orderConfirmationText).toHaveText(
       " Thankyou for the order. "
     );
-    return await this.orderID.textContent();
+    await expect(this.orderConfirmationText).toHaveText(
+      " Thankyou for the order. "
+    );
+    return await this.orderId.textContent();
   }
 }
 

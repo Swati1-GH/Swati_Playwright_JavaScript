@@ -12,7 +12,7 @@ class CartPage {
 
   async VerifyProductIsDisplayed(productName) {
     await this.cartProducts.waitFor();
-    const bool = await this.getProductLocator(productName).isVisible();
+    const bool = await (await this.getProductLocator(productName)).isVisible();
     expect(bool).toBeTruthy();
   }
 
@@ -21,7 +21,7 @@ class CartPage {
   }
 
   async getProductLocator(productName) {
-    return this.page.locator("h3:has-text(" + productName + ")");
+    return this.page.locator("h3:has-text('" + productName + "')");
   }
 }
 

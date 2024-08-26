@@ -25,7 +25,10 @@ test("Client Playwright Test", async ({ page }) => {
   const bool = await page.locator("h3:has-text('ADIDAS ORIGINAL')").isVisible();
   console.log(expect(bool).toBeTruthy());
   await page.locator("text=Checkout").click();
-  await page.locator("[placeholder*='Country']").type("ind", { delay: 100 });
+  const input = page.locator("[placeholder*='Country']");
+  await input.fill("india", { delay: 500 });
+  await input.press("Backspace");
+  await input.press("Backspace");
 
   const dropdown = page.locator(".ta-results");
   await dropdown.waitFor();
